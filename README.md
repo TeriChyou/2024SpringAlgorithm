@@ -1,2 +1,2 @@
-# test
-gitBash and VScode connecting test
+# 2024 Spring
+## Algorithm Class
