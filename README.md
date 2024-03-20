@@ -96,4 +96,50 @@ int binCoeff(int n, int k){
 
 ## 2024 03 20
 
-// Chapter 3.2
+// Chapter 3.2~3.3
+討論Floyd最短路徑演算法和為甚麼不找最遠路徑(因為會無限循環)
+
+// Chapter 3.2(小考考一次這個)
+Floyd Warshall Algo 1
+```
+void floyd(int n, const number W[][], number D[][]){
+    index i, j, k;
+    D = W;
+    for(k = 1; k <= n; k++){
+        for(i = 1; i <= n; i++){
+            for(j = 1; j <= n; j++){
+                D[i][j] = minimum(D[i][j], D[i][k] + D[k][j]);
+            }
+        }
+    }
+}
+```
+Floyd Warshall Algo 2
+```
+void floydAdv(int n, const number W[][], number D[][], index P[][]){
+    index i, j, k;
+    for(i = 1; i <= n; i++){
+        for(j = 1; j <= n; j++){
+            P[i][j] = 0;
+        }
+    }
+    D = W;
+    for(k = 1; k <= n; k++){
+        for(i = 1; i <= n; i++){
+            for(j = 1; j <= n; j++){
+                if(D[i][k] + D[k][j] < D[i][j]){
+                    P[i][j] = k;
+                    D[i][j] = D[i][k] + D[k][j];
+                }
+            }
+        }
+    }
+}
+void path(index q, r){
+    if(P[q][r] != 0){
+        path(q, P[q][r]);
+        cout << "v" << P[q][r];
+        path(P[q][r], r);
+    }
+}
+```
