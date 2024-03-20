@@ -93,3 +93,7 @@ int binCoeff(int n, int k){
     return B[n][k];
 }
 ```
+
+## 2024 03 20
+
+// Chapter 3.2
