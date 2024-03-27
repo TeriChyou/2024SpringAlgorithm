@@ -155,7 +155,7 @@ void path(index q, r){
 > ex: A(20 * 2) x B(2 * 30) x C(30 * 12) x D(12 * 8)
 > 根據不同的順序，會得A((BC)D)為1232次，比((AB)C)D的10320次少很多
 
-// Code
+// Code(Time Complexity:O(n^3))
 ```
 int minMult(int n, const int d[], index P[][]){
     index i, j, k, diagonal;
