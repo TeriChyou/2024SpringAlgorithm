@@ -148,3 +148,43 @@ void path(index q, r){
 ## 2024 03 27
 
 // Chapter 3.4
+
+
+// 3.4
+討論複數矩陣在相乘的時候，計算量的差別
+> ex: A(20 * 2) x B(2 * 30) x C(30 * 12) x D(12 * 8)
+> 根據不同的順序，會得A((BC)D)為1232次，比((AB)C)D的10320次少很多
+
+// Code
+```
+int minMult(int n, const int d[], index P[][]){
+    index i, j, k, diagonal;
+    int M[1..n][1..n];
+
+    for(i=1;i<=n;i++){
+        M[i][i] = 0;
+    }
+    for(diagonal = 1; diagonal <= n - 1; diagonal++){
+        for(i = 1; i <= n - diagonal; i++){
+            j = i + diagonal;
+            M[i][j] = minimum(M[i][k] + M[k+1][j] + d[i-1]*d[k]*d[j]);
+            P[i][j] = value k when reaching the minimum multiply times;
+        }
+    }
+    return M[1][n];
+}
+```
+```
+void order(index i, index j){
+    if(i==j){
+        cout <<"A"<<i;
+    }
+    else{
+        k = P[i][j];
+        cout << "(";
+        order(i, k);
+        order(k+1, j);
+        cout << ")";
+    }
+}
+```
