@@ -18,7 +18,7 @@ class MatrixChain:
                 for k in range(i, j):
                     q = self.M[i][k] + self.M[k + 1][j] + self.d[i - 1] * self.d[k] * self.d[j]
                     # 印出目前的詳細計算
-                    print(f"計算 M[{i}][{j}] 減掉 在k={k}處分開計算: Cost = {q}")
+                    print(f"計算 M[{i}][{j}] 減掉 在k={k}處分開計算: Cost = {self.M[i][k]} + {self.M[k+1][j]} + {self.d[i-1]} * {self.d[k]} * {self.d[j]} = {q}")
                     if q < min_val:
                         min_val = q
                         self.P[i][j] = k
@@ -26,7 +26,7 @@ class MatrixChain:
                         print(f"新的最小值 M[{i}][{j}] 在 k={k}找到: 乘法次數 = {min_val}")
                 self.M[i][j] = min_val
                 # 印出最終的結果
-                print(f" 從矩陣 A{i} 到 A{j}的乘法次數最小值: {min_val},  在k={self.P[i][j]}分開")
+                print(f"從矩陣 A{i} 到 A{j}的乘法次數最小值: {min_val},  在k={self.P[i][j]}分開")
                 print("---")
         return self.M[1][self.n]
 
@@ -42,6 +42,7 @@ class MatrixChain:
             print(")", end='')
 
     def printM(self):
+        print()
         print("M matrix:")
         for row in range(1, self.n + 1):
             for col in range(1, self.n + 1):
@@ -55,10 +56,17 @@ if __name__ == "__main__":
     # For matrices A1, A2, A3with dimensions 10x100, 100x5, 5x50 respectively
     d = [10, 100, 5, 50]
     # 課堂範例A1(5x2), A2(2x3),A3(3x4), A4(4x6), A5(6x7), A6(7x8)
+    # ANS: A1(A2A3A4A5A6), 
     d2 = [5, 2, 3, 4, 6, 7, 8]
-    mc = MatrixChain(d2)
+    # P.147 3.4-13 練習
+    # A1(10x4), A2(4, 5), A3(5x20), A4(20x2), A5(2x50)
+    # ANS: (A1(A2(A3A4)))A5
+    d3 = [10, 4, 5, 20, 2, 50]
+    # Dimension to calculate
+    D2C = d2
+    mc = MatrixChain(D2C)
     min_cost = mc.minMult()
-    print("Minimum number of multiplications is:", min_cost)
-    print("Optimal multiplication order: ", end='')
-    mc.order(1, len(d2)-1)
+    print("最少乘法次數:", min_cost)
+    print("最佳乘法排序: ", end='')
+    mc.order(1, len(D2C)-1)
     mc.printM()
