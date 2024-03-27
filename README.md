@@ -143,3 +143,8 @@ void path(index q, r){
     }
 }
 ```
+
+
+## 2024 03 27
+
+// Chapter 3.4

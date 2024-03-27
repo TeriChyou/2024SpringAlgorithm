@@ -85,20 +85,31 @@ class FloydWarshallWithPath:
 
 
 # Example usage:
-n = 5
+n = 7
+I = float('inf')
+# 例題
 W = [[0, 0, 0, 0, 0, 0],
-     [0, 0, 1, float('inf'), 1, 5],
-     [0, 9, 0, 3, 2, float('inf')],
-     [0, float('inf'), float('inf'), 0, 4, float('inf')],
-     [0, float('inf'), float('inf'), 2, 0, 3],
-     [0, 3, float('inf'), float('inf'), float('inf'), 0]]
+     [0, 0, 1, I, 1, 5],
+     [0, 9, 0, 3, 2, I],
+     [0, I, I, 0, 4, I],
+     [0, I, I, 2, 0, 3],
+     [0, 3, I, I, I, 0]]
+# p.146 3.2-5
+W2 = [[0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 4, I, I, I, 10, I],
+      [0, 3, 0, I, 18, I, I, I],
+      [0, I, 6, 0, I, I, I, I],
+      [0, I, 5, 15, 0, 2, 19 ,5],
+      [0, I, I, 12, 1, 0, I, I],
+      [0, I, I, I, I, I, 0, 10],
+      [0, I, I, I, 8, I, I, 0]] 
 # Floyd1
 #floyd_algo = FloydWarshall(n, W)
 #floyd_algo.floyd()
 #floyd_algo.print_result()
 #print("\0")
 # FLoyd2
-floyd_algo = FloydWarshallWithPath(n, W)
+floyd_algo = FloydWarshallWithPath(n, W2)
 floyd_algo.floyd_adv()
 floyd_algo.print_result()
 print("\0")
