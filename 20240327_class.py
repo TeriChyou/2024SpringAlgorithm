@@ -49,6 +49,13 @@ class MatrixChain:
                 # :>7 is for the align ment
                 print(f"{self.M[row][col]:>7}", end=" ")
             print()
+    def printP(self):
+        print()
+        print("P Matrix:")
+        for row in range(1, self.n + 1):
+            for col in range(1, self.n + 1):
+                print(f"{self.P[row][col]:>7}", end=" ")
+            print()
 
 # Example usage
 if __name__ == "__main__":
@@ -67,6 +74,7 @@ if __name__ == "__main__":
     mc = MatrixChain(D2C)
     min_cost = mc.minMult()
     print("最少乘法次數:", min_cost)
+    mc.printM()
+    mc.printP()
     print("最佳乘法排序: ", end='')
     mc.order(1, len(D2C)-1)
-    mc.printM()
