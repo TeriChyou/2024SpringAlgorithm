@@ -201,3 +201,77 @@ void order(index i, index j){
 
 ## 2024 04 10
 
+// 3.5
+
+// 3.5 Optimal Binary Search Tree
+
+TreeNode
+```
+struct nodetype{
+    keytype key;
+    nodetype* left;
+    nodetype* right;
+};
+
+typedef nodetype* node pointer;
+```
+Normal Bin Search Tree
+```
+void search(node_pointer tree, keytype keyin, node_pointer& p){
+    bool found;
+    p = tree;
+    found = false;
+    while(!found){
+        if(p->key == keyin){
+            found = true;
+        }
+        else if(keyin < p-> key){
+            p = p->left;
+        }
+        else{
+            p = p->right;
+        }
+    }
+}
+```
+
+Opt. Bin Search Tree
+```
+void optSearch(int n, const float p[], float& minavg, index R[][]){
+    index i, j, k, diagonal;
+    float A[1..n + 1][0..n];
+    for(i = 1; i <= n; i++){
+        A[i][i-1] = 0;
+        A[i][i] = p[i];
+        R[i][i] = i;
+        R[i][i-1] = 0;
+    }
+    A[n+1][n]=0;
+    R[n+1][n]=0;
+    for(diagonal = 1; diagonal <= n-1; diagonal++){
+        for(i = 1; i <= n-diagonal;i++){
+            j=i+diagonal;
+            A[i][j] = min(A[i][k-1] + A[k+1][j]) + summation(P_m,m from i to j);
+            R[i][j] = k when reaching least time multiplying;
+        }
+        minavg = A[1][n];
+    }
+}
+```
+Construct Opt. Bin tree
+```
+node_pointer tree(index i, j){
+    index k;
+    node_pointer p;
+
+    k = R[i][j];
+    if(k == 0) return NULL;
+    else{
+        p = new nodetype;
+        p->key = Key[k];
+        p->left = tree(i, k-1);
+        p->right = tree(k+1, j);
+        return p;
+    }
+}
+```
