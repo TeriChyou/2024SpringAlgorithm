@@ -70,7 +70,7 @@ if __name__ == "__main__":
     # ANS: (A1(A2(A3A4)))A5
     d3 = [10, 4, 5, 20, 2, 50]
     # Dimension to calculate
-    D2C = d2
+    D2C = d3
     mc = MatrixChain(D2C)
     min_cost = mc.minMult()
     print("最少乘法次數:", min_cost)
