@@ -27,7 +27,9 @@ class QuickSort:
 
 # Example usage
 arr = [15, 22, 13, 27, 12, 10, 20, 25]
-qs = QuickSort(arr)
+# midterm
+midterm = [123, 34, 189, 56, 150, 12, 9, 240]
+qs = QuickSort(midterm)
 qs.qsMain()
 
 ## Large Int Product
