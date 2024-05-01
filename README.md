@@ -279,7 +279,8 @@ node_pointer tree(index i, j){
 ### 以上為期中以前
 
 ## 補充環節
-# Huffman Coding
+# Huffman Tree
+# 用途:資料、影像壓縮...
 
 // Example
 => A,B,C,D,E,F,G,H
@@ -302,5 +303,33 @@ using priority queue(優先佇列)
                  2,E   5,B
 ```
 
+## 3.6 售貨員旅行問題
+### Hamiltonian Circuit,非尤拉循環(但也是起點回起點，途中經過所有其他節點)
+
+// 會有個相鄰矩陣W 去表示 有向圖節點的關係
+
+Φ 是不經任何頂點回到v_1
+
+```
+// this is the code that the start node is v_1
+void travel(int n, const number W[][], index P[][], number& minlength){
+    index i, j, k;
+    number D[1..n][subset of V - {v_1}];
+    for(i=2; i <= n; i++){
+        D[i][Φ] = W[i][1]; // Φ means not passing through any nodes and go back to v_1
+    }
+    for(k = 1; k<=n-2; k++){
+        for(All V-{v_1} subsets A that includes k nodes){
+            for(i such that i not equals to 1 and v_i is not in A){
+                D[i][A] = min(W[i][j] + D[j][A - {v_j}]);  // j:v_j belongs to A
+                P[i][A] = j that causes minimum;
+            }
+        }
+    }
+    D[1][V-{v_1}] = min(W[1][j] + D[j][V-{v_1, v_j}]); // 2 <= j <= n
+    P[1][V-{v_1}] = j that causes minimum;
+    minlength = D[1][V-{v_1}];
+}
+```
 
 

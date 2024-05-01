@@ -11,21 +11,21 @@ class Node:
         self.right = right
 
     def __lt__(self, other):
-        # This method ensures that the Node with the lowest frequency has higher priority in the priority queue.
+        # 這個方法確保擁有最低頻率的節點有最高的優先權
         return self.frequency < other.frequency
 
 def huffman_tree(string):
-    # Count frequencies of each character in the string
+    # 用counter去列出每個字母的數量
     counter = Counter(string)
 
-    # Create a priority queue (heap) of nodes
+    # 建立一個節點的優先權佇列
     heap = [Node(val=char, frequency=count) for char, count in counter.items()]
     heapq.heapify(heap)
 
-    # Combine nodes until one remains (the root of the Huffman Tree)
+    # 合併節點直至剩下一個(霍夫曼樹的根)
     while len(heap) > 1:
-        left = heapq.heappop(heap)  # Pop the node with the smallest frequency
-        right = heapq.heappop(heap)  # Pop the next smallest frequency node
+        left = heapq.heappop(heap)  # 削掉最低頻率的節點
+        right = heapq.heappop(heap)  # 削掉下一個最低頻率的節點
 
         # Merge the two smallest nodes under a new combined node and push it back to the heap
         merged = Node(frequency=left.frequency + right.frequency, left=left, right=right)
@@ -48,6 +48,7 @@ def print_codes(node, prefix=""):
 if __name__ == "__main__":
     s = "engineer"
     s2 = "AAAAAAAAAAAAAAAAAAAAAAABBBBBCCCCCCCCCCCDDDDDDDDDDDDDDDDDDDEEFFFFFFFFFFFGGGGGGGGGGGGGGGGGGGGHHHHH"
-    root = huffman_tree(s)
+    s3 = "FFFFFFFFFFGGGGGGGGGGGGGGGGGGGGHHHHHAAAAAAAAAAAAAAAAAAAAAAABBBBBCCCCCCCCCCCDDDDDDDDDDDDDDDDDDDEEF" # same as s2
+    root = huffman_tree(s3)
     print("Huffman Codes for characters in string:")
     print_codes(root)
