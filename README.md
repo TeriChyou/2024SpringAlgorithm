@@ -277,3 +277,8 @@ node_pointer tree(index i, j){
 ```
 
 ### 以上為期中以前
+
+## 補充環節
+# Huffman Coding
+
+// 
