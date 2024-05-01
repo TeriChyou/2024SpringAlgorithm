@@ -281,4 +281,26 @@ node_pointer tree(index i, j){
 ## 補充環節
 # Huffman Coding
 
-// 
+// Example
+=> A,B,C,D,E,F,G,H
+=> 22,5,11,19,2,11,25,5
+using priority queue(優先佇列)
+
+=> E, B, H, C, F, D, A, G
+=> 2, 5, 5, 11, 11, 19, 22, 25 (the frequency that the digits pops out)
+```
+              100
+             /   \1
+           0/     56
+           /    0/  \1
+          /    25,G  31
+        44         0/  \1
+      0/  \1      12    19,D
+     22   22,A  0/  \1
+   0/  \1     5,H    7
+ 11,C  11,F        0/ \1
+                 2,E   5,B
+```
+
+
+
