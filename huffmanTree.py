@@ -27,18 +27,18 @@ def huffman_tree(string):
         left = heapq.heappop(heap)  # 削掉最低頻率的節點
         right = heapq.heappop(heap)  # 削掉下一個最低頻率的節點
 
-        # Merge the two smallest nodes under a new combined node and push it back to the heap
+        # 將兩個最小的節點合併到一個新的組合節點下並將其推回heap中
         merged = Node(frequency=left.frequency + right.frequency, left=left, right=right)
         heapq.heappush(heap, merged)
 
-    # The remaining node is the root of the Huffman tree
+    # 最後一個節點就是霍夫曼樹的根啦
     return heap[0]
 
 def print_codes(node, prefix=""):
-    # Base case: If the node is a leaf, print its character and the code (path from root)
+    # 印出結果: 若節點為樹葉, 印出字母及編碼 (從根的路徑編碼)
     if node.val is not None:
         print(f"{node.val}: {prefix}")
-    # Recursive case: Traverse left and right with updated prefix
+    # 遞迴: 追蹤左右子樹去更新前綴
     if node.left is not None:
         print_codes(node.left, prefix + "0")
     if node.right is not None:
@@ -47,8 +47,13 @@ def print_codes(node, prefix=""):
 # Example usage
 if __name__ == "__main__":
     s = "engineer"
-    s2 = "AAAAAAAAAAAAAAAAAAAAAAABBBBBCCCCCCCCCCCDDDDDDDDDDDDDDDDDDDEEFFFFFFFFFFFGGGGGGGGGGGGGGGGGGGGHHHHH"
+    s2 = "AAAAAAAAAAAAAAAAAAAAAAABBBBBCCCCCCCCCCCDDDDDDDDDDDDDDDDDDDEEFFFFFFFFFFFGGGGGGGGGGGGGGGGGGGGHHHHH" 
     s3 = "FFFFFFFFFFGGGGGGGGGGGGGGGGGGGGHHHHHAAAAAAAAAAAAAAAAAAAAAAABBBBBCCCCCCCCCCCDDDDDDDDDDDDDDDDDDDEEF" # same as s2
     root = huffman_tree(s3)
     print("Huffman Codes for characters in string:")
     print_codes(root)
+
+# Big(O)
+# Frequency counting: O(n) -> n = length of string
+# Heap Operation: O(klogk) -> k = unique characters in string
+# Tree traversal code: O(k)
