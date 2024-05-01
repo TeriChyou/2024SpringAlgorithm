@@ -1,6 +1,4 @@
 # Huffman Tree
-
-
 # source code from leetcode, and enhanced the code out put
 from collections import Counter
 import heapq
@@ -50,6 +48,6 @@ def print_codes(node, prefix=""):
 if __name__ == "__main__":
     s = "engineer"
     s2 = "AAAAAAAAAAAAAAAAAAAAAAABBBBBCCCCCCCCCCCDDDDDDDDDDDDDDDDDDDEEFFFFFFFFFFFGGGGGGGGGGGGGGGGGGGGHHHHH"
-    root = huffman_tree(s2)
+    root = huffman_tree(s)
     print("Huffman Codes for characters in string:")
     print_codes(root)
