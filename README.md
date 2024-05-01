@@ -307,8 +307,11 @@ using priority queue(優先佇列)
 ### Hamiltonian Circuit,非尤拉循環(但也是起點回起點，途中經過所有其他節點)
 
 // 會有個相鄰矩陣W 去表示 有向圖節點的關係
-
-Φ 是不經任何頂點回到v_1
+起始節點v_1(i)
+1. Φ 是不經任何頂點回到v_1
+2. 經過一個節點回到v_1
+3. 經過兩個節點回到v_1
+4. 經過三個節點回到v_1 (到總結點-1)
 
 ```
 // this is the code that the start node is v_1
