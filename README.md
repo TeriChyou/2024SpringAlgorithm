@@ -335,4 +335,7 @@ void travel(int n, const number W[][], index P[][], number& minlength){
 }
 ```
 
+## 2024 05 08 algo
+
+
 
