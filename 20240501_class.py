@@ -65,7 +65,7 @@ def travel(n, W):
     path.reverse()
     return min_cost, path
 # Example setup
-n = 4
+n = 5
 I = float('inf')
 W = [
     [0, 2, 9, I],
@@ -80,7 +80,7 @@ W2 = [
     [6, 6, 7, 0, 11],
     [10, 6, 2, 1, 0]
 ]
-chosen = W
+chosen = W2
 min_length, route = travel(len(chosen[0]), chosen)
 print("Minimum path length:", min_length)
 print("Route:", [i+1 for i in route]) # i+1 just while python is zero indexed

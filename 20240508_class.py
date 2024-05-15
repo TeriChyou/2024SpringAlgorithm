@@ -68,9 +68,10 @@ class GeneSequenceAligner:
 
 # Example usage
 if __name__ == "__main__":
-    seq1 = "AACAGTTACC"
-    seq2 = "TAAGGTCA"
-    aligner = GeneSequenceAligner(seq1, seq2)
+    SEQ1 = ["AACAGTTACC", "TAAGGTCA"]
+    SEQ2 = ["CCGGGTTACCA", "GGAGTTCA"] 
+    selected = SEQ2
+    aligner = GeneSequenceAligner(selected[0], selected[1])
     print("Alignment Cost:", aligner.alignment_cost())
     aligned_seq1, aligned_seq2 = aligner.trace_back()
     print("Optimal Alignment Sequences:")
