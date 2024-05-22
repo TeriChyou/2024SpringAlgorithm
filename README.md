@@ -339,3 +339,7 @@ void travel(int n, const number W[][], index P[][], number& minlength){
 
 
 
+## 2024 05 22 algo
+- prim's algorithm
+- kruskal's algorithm
+- dijkstra's algorithm
