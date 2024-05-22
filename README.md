@@ -343,3 +343,29 @@ void travel(int n, const number W[][], index P[][], number& minlength){
 - prim's algorithm
 - kruskal's algorithm
 - dijkstra's algorithm
+
+- process optimizing
+
+[work, deadline, profit]
+[1, 3, 40]
+[2, 1, 35]
+[3, 1, 30]
+[4, 3, 25]
+[5, 1, 20]
+[6, 3, 15]
+[7, 2, 10]
+
+sequence_of_integer schedule(int n, const int deadline[], sequence_of_integer& j){
+    index i;
+    sequence_of_integer K;
+
+    J = [1];
+    for(i = 2; i <=n; i++){
+        K = J that according to i join into the non-decreasing value of deadline[i];
+        if(K is doable){
+            J = K;
+        }
+    }
+
+    return J;
+}
