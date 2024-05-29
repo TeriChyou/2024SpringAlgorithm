@@ -369,3 +369,147 @@ sequence_of_integer schedule(int n, const int deadline[], sequence_of_integer& j
 
     return J;
 }
+
+
+## 2024 05 29 algo
+
+- At 4.5: Greedy algo can not solve 0-1 package problem.
+
+
+n-queen problem
+```
+void queens(index i){
+    index j;
+    if(promising(i)){
+        if(i == n){
+            cout << col[l] to col[n];
+        }
+        else{
+            for(j = 1; j <= n; j++){
+                col[i+1] = j;
+                queens(i+1);
+            }
+        }
+    }
+}
+
+bool promising(index i){
+    index k;
+    bool switch;
+    k = 1;
+    switch = true;
+    while(k < i && swtich){
+        if(col[i] == col[k] || abs(col[i]-col[k]) == i - k){
+            swtich = false;
+        }
+        k++;
+    }
+    return switch;
+}
+```
+
+sum of subsets probem
+```
+void sum_of_subsets(index i, int weight, int total){
+    if(promising(i)){
+        if(weight == W){
+            cout<<include[1] through include[i];
+        }
+        else{
+            include[i+1] = "yes";
+            sum_of_subsets(i+1, weight+w[i+1], total-w[i+1]);
+            include[i+1] = "no";
+            sum_of_subsets(i+1, weight, total - w[i+1]);
+        }
+    }
+}
+bool promising(index i){
+    return (weight + total >=W) && (weight == W || weight + w[i+1] <= W);
+}
+```
+
+m-coloring problem
+```
+void m_coloring(index i){
+    int color;
+    if(promising(i)){
+        if(i == n){
+            cout<<vcolor[1] through vcolor[n];
+        }
+        else{
+            for(color = 1; color <= m; color++){
+                vcolor[i+1] = color;
+                m_coloring(i+1);
+            }
+        }
+    }
+}
+bool promising(index i){
+    index j;
+    bool switch;
+    switch = true;
+    j = 1;
+    while(j < i && switch){
+        if(W[i][j] && vcolor[i] == vcolor[j]){
+            switch = false;
+            j++;
+        }
+    }
+    return  switch;
+}
+```
+
+Hamiltonian circuit problem
+```
+void hamiltonian(index i){
+    index j;
+    if(promising(i)){
+        if(i == n - 1){
+            cout<<vindex[0] through vindex[n - 1];
+        }
+        else{
+            for(j = 2; j <=n ; j++){
+                vindex[i+1] = j;
+                hamiltonian(i+1);
+            }
+        }
+    }
+}
+
+bool promising(index i){
+    index j;
+    bool switch;
+    if(i == n - 1 && !W[vindex[n-1]][vindex[0]]){
+        switch = false;
+    }
+    else if(i > 0&& !W[vindex[i-1]][vindex[i]]){
+        switch = false;
+    }
+    else{
+        switch = true;
+        j = 1;
+        while(j < i && switch){
+            if(vindex[i] == vindex[j]){
+                switch = false;
+            }
+            j++;
+        }
+    }
+    return switch;
+}
+```
+
+0-1 backpack problem
+```
+void checkNode(node v){
+    node u;
+    if(value(v) is better than best){
+        best = value(v);
+    }
+    if(promising(v)){
+        for(subnode u in every v){
+            checknode(u);
+        }
+    }
+}
+```

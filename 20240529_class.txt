@@ -1,0 +1,6 @@
+# files include:
+nQueen_algo.py
+numOfSubsets.py
+mColoring.py
+hamiltonianAlgo.py
+0_1backpackAlgo.py
