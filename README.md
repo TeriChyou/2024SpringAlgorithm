@@ -600,3 +600,43 @@ float bound(node u){
     }
 }
 ```
+
+TSP with best-fit
+```
+void tspBestFit(int n, const number W[][], ordered-set& opttour, number& minlength){
+    priority queue_of_node PQ;
+    node u, v;
+
+    initialize(PQ);
+    v.level = 0;
+    v.path = [1];
+    v.bound = bound(v);
+    minlength = float('inf);
+    insert(PQ, v);
+    while(!empty(PQ)){
+        remove(PQ, v);
+        if(v.bound<minlength){
+            u.level = v.level + 1;
+            for(all i such that 2 <= i <= n && i is not in v.path){
+                u.path = v.path;
+                put i at the end of u.path;
+                if(u.level == n - 2){
+                    put index of only vertex not in u.path at the end of u.path;
+                    put 1 at the end of u.path;
+                    if(length(u) < minlength){
+                        minlength = length(u);
+                        opttour = u.path;
+                    }
+                }
+                else{
+                    u.bound = bound(u);
+                    if(u.bount < minlenght){
+                        insert(PQ, u);
+                    }
+                }
+            }
+        }
+    }
+} 
+
+```

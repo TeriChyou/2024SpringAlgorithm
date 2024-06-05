@@ -80,7 +80,14 @@ W2 = [
     [6, 6, 7, 0, 11],
     [10, 6, 2, 1, 0]
 ]
-chosen = W2
+W3 = [
+    [0, 14, 4, 10, 20],
+    [14, 0, 7, 8, 7],
+    [4, 5, 0, 7, 16],
+    [11, 7, 9, 0, 2],
+    [18, 7, 17, 4, 0]
+]
+chosen = W3
 min_length, route = travel(len(chosen[0]), chosen)
 print("Minimum path length:", min_length)
 print("Route:", [i+1 for i in route]) # i+1 just while python is zero indexed
