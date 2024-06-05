@@ -35,13 +35,17 @@ class Knapsack:
             self.best = v.profit
         if v.level + 1 < self.n:
             u = Node(v.level + 1, v.profit + self.profits[v.level + 1], v.weight + self.weights[v.level + 1])
-            if self.bound(u) > self.best:
+            bound_u = self.bound(u)
+            print(f"節點的界限值，利潤 {u.profit}, 重量 {u.weight}, 等級 {u.level} 是 {bound_u}")
+            if bound_u > self.best:
                 print(f"前往階層:{u.level + 1} => 獲利:{u.profit} 重量:{u.weight}")
                 self.check_node(u)
             else:
                 print(f"回溯至階層:{u.level + 1} => 獲利:{u.profit} 重量:{u.weight}")
             u = Node(v.level + 1, v.profit, v.weight)
-            if self.bound(u) > self.best:
+            bound_u = self.bound(u)
+            print(f"節點的界限值，利潤 {u.profit}, 重量 {u.weight}, 等級 {u.level} 是 {bound_u}")
+            if bound_u > self.best:
                 print(f"前往階層:{u.level + 1} => 獲利:{u.profit} 重量:{u.weight}")
                 self.check_node(u)
             else:
@@ -54,3 +58,4 @@ capacity = 16
 knapsack = Knapsack(weights, profits, capacity)
 knapsack.knapsack()
 print(f"最大獲利為: {knapsack.best}")
+# false = 沒用了 回溯

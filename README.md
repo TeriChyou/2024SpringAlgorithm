@@ -513,3 +513,90 @@ void checkNode(node v){
     }
 }
 ```
+
+## 2024 06 05
+
+class BFS 
+
+```
+void breadth_first_branch_and_bound(state_space_tree T, number& best){
+    queue_of_node Q;
+    node u, v;
+
+    initialize(Q);
+    v = root of T;
+    enqueue(Q, v);
+    best = value(v);
+    while(!empty(Q)){
+        dequeue(Q, v);
+        for(each child u of v){
+            if(value(u) is  better than best){
+                best = value(u);
+            }
+            if(bound(u) is better than best){
+                enqueue(Q, u);
+            }
+        }
+    }
+}
+
+struct node{
+    int level;
+    int profit;
+    int weight;
+}
+
+void knapsack2(int n, const int p[], const int w[], int W, int& maxprofit){
+    queue_of_node Q;
+    node u, v;
+    
+    initialize(Q);
+    v.level = 0;
+    v.profit = 0;
+    v.weight = 0;
+
+    maxProfit = 0;
+    enqueue(Q, v);
+    while(!empty(Q)){
+        dequeue(Q, v);
+        u.level = v.level + 1;
+        u.weight = v.weight + w[u.level];
+        u.profit = v.profit + p[u.level];
+        if(u.weight <= W && u.profit>maxProfit){
+            maxProfit = u.profit;
+        }
+        if(bound(u) > maxProfit){
+            enqueue(Q, u);
+        }
+        u.weight = v.weight;
+        u.profit = v.profit;
+        if(bound(u)>maxProfit){
+            enqueue(Q, u);
+        }
+    }
+}
+float bound(node u){
+    index j, k;
+    int totweight;
+    float result;
+
+    if(u.weight >= W){
+        return 0;
+    }
+    else{
+        result = u.profit;
+        j = u.level + 1;
+        totweight = u.weight;
+        while(j <= n && totweight + w[j] <= W){
+            totweight = totweight + w[j];
+            result = result + p[j];
+            j++;
+        }
+        k = j;
+        if(k <= n){
+            result = result + (W - totweight) * p[k] / w[k];
+        }
+        return result;
+    }
+}
+```
